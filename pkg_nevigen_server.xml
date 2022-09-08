@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9" type="package" method="upgrade">
+    <name>PKG_NEVIGEN_SERVER</name>
+    <packagename>nevigen_server</packagename>
+    <author>Artem Pavluk</author>
+    <creationDate>August 2022</creationDate>
+    <copyright>copyright © Nevigen.com. All rights reserved</copyright>
+    <license>Proprietary. Copyrighted Commercial Software</license>
+    <authorEmail>support@nevigen.com</authorEmail>
+    <authorUrl>https://nevigen.com</authorUrl>
+    <version>0.0.1-dev</version>
+    <description>PKG_NEVIGEN_SERVER_DESCRIPTION</description>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.pkg_nevigen_server.sys.ini</language>
+        <language tag="ru-RU">ru-RU/ru-RU.pkg_nevigen_server.sys.ini</language>
+    </languages>
+    <files>
+        <folder type="component" id="com_nevigen_server">com_nevigen_server</folder>
+        <folder type="plugin" group="system" id="nevigen_server">plg_system_nevigen_server</folder>
+    </files>
+</extension>

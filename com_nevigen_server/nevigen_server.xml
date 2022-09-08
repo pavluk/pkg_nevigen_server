@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9" type="component" method="upgrade">
+    <name>COM_NEVIGEN_SERVER</name>
+    <author>Artem Pavluk</author>
+    <creationDate>August 2022</creationDate>
+    <copyright>copyright © Nevigen.com. All rights reserved</copyright>
+    <license>Proprietary. Copyrighted Commercial Software</license>
+    <authorEmail>support@nevigen.com</authorEmail>
+    <authorUrl>https://nevigen.com</authorUrl>
+    <version>0.0.1-dev</version>
+    <description>COM_NEVIGEN_SERVER_DESCRIPTION</description>
+    <scriptfile>script.php</scriptfile>
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+    <files folder="site">
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+        <folder>models</folder>
+        <folder>views</folder>
+        <filename>controller.php</filename>
+        <filename>nevigen_server.php</filename>
+        <filename>router.php</filename>
+    </files>
+    <languages folder="site">
+        <language tag="en-GB">language/en-GB/en-GB.com_nevigen_server.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.com_nevigen_server.sys.ini</language>
+        <language tag="ru-RU">language/ru-RU/ru-RU.com_nevigen_server.ini</language>
+        <language tag="ru-RU">language/ru-RU/ru-RU.com_nevigen_server.sys.ini</language>
+    </languages>
+    <administration>
+        <menu>COM_NEVIGEN_SERVER</menu>
+        <files folder="admin">
+            <folder>controllers</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>controller.php</filename>
+            <filename>nevigen_server.php</filename>
+        </files>
+        <languages folder="admin">
+            <language tag="en-GB">language/en-GB/en-GB.com_nevigen_server.ini</language>
+            <language tag="en-GB">language/en-GB/en-GB.com_nevigen_server.sys.ini</language>
+            <language tag="ru-RU">language/ru-RU/ru-RU.com_nevigen_server.ini</language>
+            <language tag="ru-RU">language/ru-RU/ru-RU.com_nevigen_server.sys.ini</language>
+        </languages>
+    </administration>
+</extension>

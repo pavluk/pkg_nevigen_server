@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9" type="plugin" group="system" method="upgrade">
+    <name>PLG_SYSTEM_NEVIGEN_SERVER</name>
+	<author>Artem Pavluk</author>
+	<creationDate>August 2022</creationDate>
+	<copyright>copyright © Nevigen.com. All rights reserved</copyright>
+	<license>Proprietary. Copyrighted Commercial Software</license>
+	<authorEmail>support@nevigen.com</authorEmail>
+	<authorUrl>https://nevigen.com</authorUrl>
+	<version>0.0.1-dev</version>
+    <description>PLG_SYSTEM_NEVIGEN_SERVER_DESCRIPTION</description>
+    <scriptfile>script.php</scriptfile>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.plg_system_nevigen_server.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_system_nevigen_server.sys.ini</language>
+    </languages>
+    <files>
+        <filename plugin="nevigen_server">nevigen_server.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+            </fieldset>
+        </fields>
+    </config>
+</extension>

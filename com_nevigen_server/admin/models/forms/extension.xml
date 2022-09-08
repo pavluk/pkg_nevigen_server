@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <field name="title" type="text"
+           label="JGLOBAL_TITLE"
+           description="JFIELD_TITLE_DESC"
+           class="input-xxlarge input-large-text"
+           size="40"
+           required="true"/>
+    <field name="version" type="text"
+           label="COM_NEVIGEN_SERVER_EXTENSION_VERSION"
+           required="true"
+           class="input-mini"
+           pattern="^\d+(\.\d+)*$"/>
+    <field name="file_upload" type="file"
+           label="COM_NEVIGEN_SERVER_EXTENSION_FILE_UPLOAD"
+           class="span12"/>
+    <fieldset name="global">
+        <field name="id" type="text"
+               label="JGLOBAL_FIELD_ID_LABEL"
+               description="JGLOBAL_FIELD_ID_DESC"
+               class="readonly"
+               size="10"
+               default="0"
+               readonly="true"/>
+        <field name="element" type="text"
+               label="COM_NEVIGEN_SERVER_EXTENSION_ELEMENT"
+               required="true"/>
+        <field name="type" type="list"
+               label="COM_NEVIGEN_SERVER_EXTENSION_TYPE"
+               required="true"
+               default="">
+            <option value="">COM_NEVIGEN_SERVER_EXTENSION_TYPE_SELECT</option>
+            <option value="component">COM_NEVIGEN_SERVER_EXTENSION_TYPE_COMPONENT</option>
+            <option value="file">COM_NEVIGEN_SERVER_EXTENSION_TYPE_FILE</option>
+            <option value="language">COM_NEVIGEN_SERVER_EXTENSION_TYPE_LANGUAGE</option>
+            <option value="library">COM_NEVIGEN_SERVER_EXTENSION_TYPE_LIBRARY</option>
+            <option value="module">COM_NEVIGEN_SERVER_EXTENSION_TYPE_MODULE</option>
+            <option value="package">COM_NEVIGEN_SERVER_EXTENSION_TYPE_PACKAGE</option>
+            <option value="plugin">COM_NEVIGEN_SERVER_EXTENSION_TYPE_PLUGIN</option>
+            <option value="template">COM_NEVIGEN_SERVER_EXTENSION_TYPE_TEMPLATE</option>
+        </field>
+        <field name="paid" type="radio"
+               default="1"
+               label="COM_NEVIGEN_SERVER_EXTENSION_PAID"
+               class="btn-group btn-group-yesno">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field name="support" type="number"
+               label="COM_NEVIGEN_SERVER_EXTENSION_SUPPORT"
+               required="true"
+               showon="paid:1"/>
+        <field name="state" type="list"
+               label="JSTATUS"
+               description="JFIELD_PUBLISHED_DESC"
+               class="chzn-color-state"
+               filter="intval"
+               size="1"
+               default="1">
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+            <option value="-2">JTRASHED</option>
+        </field>
+    </fieldset>
+</form>

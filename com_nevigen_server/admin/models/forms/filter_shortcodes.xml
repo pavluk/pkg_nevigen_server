@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="JSEARCH_FILTER"/>
+    </fields>
+    <fields name="list">
+        <field name="fullordering" type="list"
+               onchange="this.form.submit();"
+               default="o.id DESC">
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="o.id ASC">JGRID_HEADING_ID_ASC</option>
+            <option value="o.id DESC">JGRID_HEADING_ID_DESC</option>
+        </field>
+        <field name="limit" type="limitbox"
+               class="inputbox input-mini"
+               default="25"
+               onchange="this.form.submit();"/>
+    </fields>
+</form>
