@@ -24,24 +24,6 @@ use Joomla\CMS\Table\Table;
 class NevigenServerModelOrder extends AdminModel
 {
     /**
-     * Method to get version data.
-     *
-     * @param integer $pk The id of the version.
-     *
-     * @return  mixed  Version object on success, false on failure.
-     *
-     * @since  __DEPLOY_VERSION__
-     */
-    public function getItem($pk = null)
-    {
-        if ($item = parent::getItem($pk)) {
-
-        }
-
-        return $item;
-    }
-
-    /**
      * Returns a Table object, always creating it.
      *
      * @param string $type The table type to instantiate
@@ -117,7 +99,7 @@ class NevigenServerModelOrder extends AdminModel
      */
     public function save($data)
     {
-        $pk = (!empty($data['id'])) ? $data['id'] : (int)$this->getState($this->getName() . '.id');
+        $pk = (isset($data['id'])) ? $data['id'] : (int)$this->getState($this->getName() . '.id');
         $table = $this->getTable();
         $isNew = true;
 
