@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_NEVIGEN_SERVER_VIEW_UPDATE" option="COM_NEVIGEN_SERVER_VIEW_UPDATE_DEFAULT_OPTION">
+        <message>
+            <![CDATA[COM_NEVIGEN_SERVER_VIEW_UPDATE_DESCRIPTION]]>
+        </message>
+    </layout>
+    <fields name="request" />
+</metadata>
+

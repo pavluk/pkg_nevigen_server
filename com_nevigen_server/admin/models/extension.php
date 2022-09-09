@@ -15,6 +15,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Filesystem\File;
 use Joomla\CMS\Filesystem\Folder;
 use Joomla\CMS\Form\Form;
+use Joomla\CMS\Language\LanguageHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Table\Table;
@@ -168,11 +169,63 @@ class NevigenServerModelExtension extends AdminModel
                 File::upload($file['tmp_name'], $path . '/' . $name, false, true);
             }
 
+            if ($isNew) $this->generationList();
+
             return $id;
         }
 
         return false;
     }
 
+    public function generationList()
+    {
+        JLoader::register('JSFactory', JPATH_SITE . '/components/com_jshopping/lib/factory.php');
+        $filename = JPATH_SITE . '/listExtensions.json';
+        $db = $this->getDbo();
+        $query = $db->getQuery(true)
+            ->select(array('e.*', 'p.product_id', 'p.image', 'cp.category_id'))
+            ->from($db->quoteName('#__nevigen_server_extensions', 'e'))
+            ->where('e.state = 1');
 
+        // Join products
+        $query->leftJoin($db->quoteName('#__jshopping_products', 'p') . ' ON e.id = p.extension_id');
+
+        // Join categories products
+        $query->leftJoin($db->quoteName('#__jshopping_products_to_categories', 'cp') . ' ON cp.product_id = p.product_id');
+
+        $languages = LanguageHelper::getContentLanguages();
+        $selectLang = array();
+        foreach ($languages as $language) {
+            $selectLang[] = $db->quoteName('p.name_' . $language->lang_code);
+            $selectLang[] = $db->quoteName('p.description_' . $language->lang_code);
+        }
+
+        if (!empty($selectLang)) $query->select($selectLang);
+
+        $results = $db->setQuery($query)->loadAssocList();
+        $data = array();
+        $config = JSFactory::getConfig();
+        foreach ($results as $result) {
+            $extension = array();
+            $extension['title'] = $result['title'];
+            $extension['image'] = $config->image_product_live_path . '/' . $result['image'];
+            $extension['element'] = $result['element'];
+            $extension['paid'] = $result['paid'];
+            $link = getFullUrlSefLink('index.php?option=com_jshopping&controller=product&task=view&category_id=' . $result['category_id'] . '&product_id=' . $result['product_id']);
+            $extension['product_link'] = str_replace(array('/en/', '/ru/', '/uk/', '/ua/'), '/', $link);
+            foreach ($languages as $language) {
+                if (!isset($extension[$language->lang_code])) $extension[$language->lang_code] = array();
+                $extension[$language->lang_code]['title'] = $result['name_' . $language->lang_code];
+                $extension[$language->lang_code]['description'] = $result['description_' . $language->lang_code];
+            }
+
+            $data[$extension['element']] = $extension;
+        }
+
+        if (!empty($data)) {
+            if (File::exists($filename)) File::delete($filename);
+            File::append($filename, json_encode($data));
+        }
+
+    }
 }

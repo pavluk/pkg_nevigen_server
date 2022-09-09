@@ -9,3 +9,12 @@
  */
 
 defined('_JEXEC') or die;
+
+JLoader::register('NevigenServerHelperRoute', JPATH_SITE . '/components/com_nevigen_server/helpers/route.php');
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\BaseController;
+
+$controller = BaseController::getInstance('NevigenServer');
+$controller->execute(Factory::getApplication()->input->get('task'));
+$controller->redirect();
